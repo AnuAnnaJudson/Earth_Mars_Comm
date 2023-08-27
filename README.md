@@ -6,17 +6,16 @@ Tech Stack on NodeJs
 2. It’s route as host:port/api/earth-mars-comm/message
 3. The action will just take one parameter as string. It can be either the English text or the
 Numeric Series.
-For example: action(message: string)
+
 2. Middleware
-1. You need to create a middleware that will read the request headers and log the sender
+1. A middleware that will read the request headers and log the sender
 and receiver in the console.
-2. Pass the headers as shown below and log them in the console from the middleware.
+2. The headers  are as shown below and log them in the console from the middleware.
 x-sender = earth
 x-receiver = mars
-To understand whether the given message is coming from Earth or Mars, you will need to use
+To understand whether the given message is coming from Earth or Mars, we use
 these headers, so you can perform the right translation.
-For example, if the x-sender is earth and x-receiver is mars, the message has to be converted
-from English to Numebrs (Task 1).
+
 Log Translation Time
 Also, log the time it takes to process the request from the time it enters the program and exits.
 3. Translation Method
@@ -25,7 +24,7 @@ Also, log the time it takes to process the request from the time it enters the p
 translation.
 3. Once done, the translation is returned from the action.
 4. Interceptor
-1. Create an Interceptor that will modify each outgoing message, so our program can
+1. An Interceptor that will modify each outgoing message, so our program can
 understand the communication
 2. This interceptor will read the values set by the Middleware (x-sender and x-receiver).
 3. If the incoming message was from Earth, the response JSON will show ‘Response From
