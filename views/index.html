@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earth-Mars</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Communication Portal</h1>
+    <form>
+      <label for="input">Enter your Message:</label>
+      <input type="text" id="input" name="input" />
+      <div>
+        <input type="button" onclick="callConversionApi()" value="send"/>
+      </div>
+    </form>
+    <div><h3></h3>Converted Message: </h3><h3 id="convertedText"></h3></div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const callConversionApi=()=> {
+      const input = document.getElementById("input").value;
+      let headers1={}
+    if(/^\d/.test(input)){
+        
+         headers1 = {
+        "x-sender": "mars",
+        "x-receiver": "earth",
+      }
+    }else{
+      
+
+         headers1 = {
+        "x-sender": "earth",
+        "x-receiver": "mars",
+      }
+
+    }
+    const headers=headers1
+      
+
+      const requestData = {
+        input: input
+      };
+
+      axios
+        .post(`/api/earth-mars-comm/message?input=${input}`, requestData, { headers })
+        .then((response) => {
+            if(response.data.Response_from_Mars){
+          document.getElementById("convertedText").innerHTML = response.data.Response_from_Mars;
+
+            }else if(response.data.Response_from_Earth){
+          document.getElementById("convertedText").innerHTML = response.data.Response_from_Earth;
+
+            }
+        })
+        .catch((error) => {
+          console.error("Error occurred during conversion", error);
+          document.getElementById("convertedText").innerHTML =
+            "Error occurred during conversion";
+        });
+    }
+  </script>
+</html>

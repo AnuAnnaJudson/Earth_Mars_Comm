@@ -24,8 +24,6 @@ Also, log the time it takes to process the request from the time it enters the p
 2. This method will use these header values extracted by the Middleware to perform the
 translation.
 3. Once done, the translation is returned from the action.
-If Else Cloud - www.ifelsecloud.com | 5
-Prgamming Task - NodeJS Developer | If Else Cloud
 4. Interceptor
 1. Create an Interceptor that will modify each outgoing message, so our program can
 understand the communication
