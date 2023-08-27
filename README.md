@@ -1,5 +1,4 @@
 This repository contains:
-Tech Stack on NodeJs
 ●  Express, Node js, html, css , javaScript
 1. API
 1. An API with just one Controller and only one POST method
